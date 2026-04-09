@@ -1,13 +1,54 @@
-.image{
+.image1{
     position:fixed;
     width: 150px;
     height:80px;
     right:5%;
     top:3%;
+  
 }
-.video{
-    width: 480px;
-    height:360px;
+
+.image2{
     position:fixed;
-    right:40%;
-    top:20%;
+    width: 150px;
+    height:150px;
+    left:10%;
+    top:5%;
+  
+}
+.image3{
+    position:fixed;
+    width: 150px;
+    height:150px;
+    left:20%;
+    top:5%;
+  
+}
+.image4{
+    position:fixed;
+    width: 150px;
+    height:150px;
+    left:30%;
+    top:5%;
+  
+}
+.video1{
+    width: 200px;
+    height:200px;
+    position:fixed;
+    left:10%;
+    top:40%;
+}
+video{
+    width: 200px;
+    height:200px;
+    position:fixed;
+    left:20%;
+    top:40%;
+}
+.video3{
+    width: 200px;
+    height:200px;
+    position:fixed;
+    left:30%;
+    top:40%;
+}
