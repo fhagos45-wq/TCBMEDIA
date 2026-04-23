@@ -1,0 +1,163 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f8f9fc;
+}
+
+/* Navbar */
+header{
+    background:#0d1b2a;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:gold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin:0 15px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+}
+
+/* Hero */
+.hero{
+    height:80vh;
+    background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('https://via.placeholder.com/1500x800');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:60px;
+}
+
+.hero p{
+    margin:20px 0;
+    font-size:20px;
+}
+
+.hero button{
+    padding:12px 25px;
+    border:none;
+    background:gold;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* Verse */
+.verse-section{
+    text-align:center;
+    padding:60px;
+    background:white;
+}
+
+.verse-section h2{
+    margin-bottom:20px;
+}
+
+/* Services */
+.services{
+    padding:60px;
+    text-align:center;
+}
+
+.service-container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.service-card{
+    background:white;
+    width:300px;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Events */
+.events{
+    background:#0d1b2a;
+    color:white;
+    text-align:center;
+    padding:60px;
+}
+
+.events ul{
+    margin-top:20px;
+}
+
+.events li{
+    margin:10px 0;
+}
+
+/* Gallery */
+.gallery{
+    padding:60px;
+    text-align:center;
+}
+
+.gallery-container{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.gallery-container img{
+    width:300px;
+    border-radius:10px;
+}
+
+/* Footer */
+footer{
+    background:black;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    header{
+        flex-direction:column;
+    }
+
+    nav ul{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
+}
