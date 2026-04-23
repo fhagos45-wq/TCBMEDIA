@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #222;
+    transition: 0.3s;
+}
+
+/* Header */
+header {
+    background: #004080;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(to right, #004080, #0073e6);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 50px;
+}
+
+.hero p {
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.join-btn {
+    padding: 12px 25px;
+    border: none;
+    background: white;
+    color: #004080;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Posts */
+.posts {
+    padding: 50px;
+}
+
+.post-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.post-card {
+    background: white;
+    padding: 25px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Events */
+.events {
+    background: #e6f0ff;
+    padding: 50px;
+}
+
+.events ul {
+    margin-top: 20px;
+}
+
+.events li {
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background: #121212;
+    color: white;
+}
+
+.dark-mode .post-card {
+    background: #222;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .post-container {
+        justify-content: center;
+    }
+}
