@@ -1,7 +1,13 @@
 
 .tigraylogo{
-    
+     display:flex;
+    width:100px;
+    height:50px;
+    top:2%;
+    right:15%;
+    position:fixed;
 }
+
 *{
     margin:0;
     padding:0;
