@@ -203,3 +203,6 @@ a{
     padding:10px;
     display:block;
 }
+.child-menu a{
+    color:black;
+}
