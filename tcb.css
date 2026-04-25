@@ -195,5 +195,7 @@ footer{
      color: black;
 }
 
-
+.communityb:hover .religionb{
+     display:block;
+}
 
