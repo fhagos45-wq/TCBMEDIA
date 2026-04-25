@@ -187,4 +187,14 @@ footer{
         font-size:35px;
     }
 }
+.parent-menu{
+    position:relative;
+    display:inline-block;
+}
+.child-menu{
+    display:none;
+    position:absolute;
+    background:white;
+    width:150px;
+}
 
