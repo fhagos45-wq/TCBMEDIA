@@ -187,13 +187,4 @@ footer{
         font-size:35px;
     }
 }
-.community-dropdown{
-    display:none;
-        position:absolute;
-        top:100%;
-        left:0;
-        background:white;
-        min-width:180px;
-        list-style:none;
-        box-shadow:0 4px 10px rgba(0,0,0,0.2);
-}
+
