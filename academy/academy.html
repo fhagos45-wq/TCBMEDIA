@@ -3,33 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCBAcademy</title>
+    <title>TCB Academy | Dashboard</title>
     <link rel="stylesheet" href="academy.css">
-    <script src="academy.js"></script>
 </head>
 <body>
 
-
     <aside class="sidebar">
-        <div class="brand">
-            <div class="brand-icon">TCB</div>
-
-         
-
-        </div>
-           <img src="images/academy.png" class="academy-logo">
+        <div class="brand-icon">TCB ACADEMY</div>
+        
         <nav class="nav-list">
             <a href="#" class="nav-item active">
-                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="currentColor"/><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="currentColor"/></svg>
-                <span>TCB Academy</span>
+                <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="currentColor"/></svg>
+                <span>Dashboard</span>
             </a>
-            
+            <a href="#" class="nav-item"><span>Courses</span></a>
+            <a href="#" class="nav-item"><span>Community</span></a>
         </nav>
 
         <div class="user-card">
             <div class="user-info">
                 <strong>Filmon Hagos</strong>
-                <span>Teacher</span>
+                <span class="user-role">Director</span>
             </div>
         </div>
     </aside>
@@ -45,8 +39,8 @@
         <main class="main-body">
             <section class="hero">
                 <div class="hero-text">
-                    <h1>Are you ready to learn?</h1>
-                    <p>I am teacher Filmon Hagos director of the TCB Academy.</p>
+                    <h1>Welcome, Teacher Filmon!</h1>
+                    <p>Manage your students and lessons across all devices.</p>
                 </div>
                 <div class="hero-stats">
                     <div class="stat"><strong>12</strong><span>Courses</span></div>
@@ -54,7 +48,7 @@
                 </div>
             </section>
 
-            <h2 class="label">Featured Management</h2>
+            <h2 class="section-label">Management Hub</h2>
             <div class="card-grid">
                 <div class="glass-card">
                     <div class="card-tag">LMS</div>
@@ -77,12 +71,65 @@
                     <button class="btn-p">View Forum</button>
                 </div>
             </div>
+
+            <section class="game-section">
+                <div id="quiz-container">
+                    <h2 class="game-title">TCB Skills Challenge</h2>
+                    <p id="question">Loading question...</p>
+                    <div id="options"></div>
+                    <p id="score"></p>
+                </div>
+            </section>
         </main>
 
         <footer class="footer">
-            <p>&copy; 2026 TCB Media Education | Advanced Offline Interface</p>
+            <p>&copy; 2026 TCB Media Education | Responsive Interface</p>
         </footer>
     </div>
 
+    <script>
+        const questions = [
+            { q: "Which HTML tag is used for the largest heading?", a: ["<head>", "<h6>", "<h1>", "<a>"], correct: 2 },
+            { q: "In English grammar, 'I have been working' is which tense?", a: ["Simple Past", "Present Perfect Continuous", "Future Tense"], correct: 1 },
+            { q: "Which CSS property changes text color?", a: ["background", "font-style", "color", "text-align"], correct: 2 },
+            { q: "What does SEO stand for?", a: ["System Engine Operation", "Search Engine Optimization", "Social Entry Online"], correct: 1 }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const qData = questions[currentQ];
+            document.getElementById("question").innerText = qData.q;
+            const optionsDiv = document.getElementById("options");
+            optionsDiv.innerHTML = "";
+            
+            qData.a.forEach((option, index) => {
+                const btn = document.createElement("button");
+                btn.className = "quiz-option";
+                btn.innerText = option;
+                btn.onclick = () => checkAnswer(index);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(index) {
+            if (index === questions[currentQ].correct) {
+                score++;
+                alert("Correct! Well done.");
+            } else {
+                alert("Incorrect. Keep studying!");
+            }
+            
+            currentQ++;
+            if (currentQ < questions.length) {
+                loadQuestion();
+            } else {
+                document.getElementById("quiz-container").innerHTML = `<h3>Quiz Finished!</h3><p>Your Final Score: ${score}/${questions.length}</p><button class='btn-p' onclick='location.reload()'>Play Again</button>`;
+            }
+        }
+
+        loadQuestion();
+    </script>
 </body>
 </html>
