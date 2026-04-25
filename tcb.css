@@ -187,10 +187,7 @@ footer{
         font-size:35px;
     }
 }
-.communityb{
-  position: relative;
-     display: inline-block;
-}
+
 .religionb{
      display: none;
      Position: absolute;
