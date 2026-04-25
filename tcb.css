@@ -187,4 +187,8 @@ footer{
         font-size:35px;
     }
 
-
+.religionbrodown{
+     display: none;
+     Position: absolute;
+     background: white;
+}
