@@ -194,8 +194,8 @@ footer{
 .religionb{
      display: none;
      Position: absolute;
-     background: white;
-     color: black;
+     background: red;
+     color: green;
 }
 
 .communityb:hover .religionb{
