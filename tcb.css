@@ -206,6 +206,6 @@ a{
 .child-menu a{
     color:black;
 }
-parent-menu:hover .child-menu{
+.parent-menu:hover .child-menu{
     display:block;
 }
