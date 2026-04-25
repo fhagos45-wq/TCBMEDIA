@@ -186,6 +186,7 @@ footer{
     .hero h1{
         font-size:35px;
     }
+}
 .communityb{
   position: relative;
      display: inline-block;
@@ -199,6 +200,6 @@ footer{
  .communityb:hover .religionb{
       display: block;
  }    
-}
+
 
 
