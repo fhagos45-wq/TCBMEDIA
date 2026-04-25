@@ -186,8 +186,9 @@ footer{
     .hero h1{
         font-size:35px;
     }
+}
 
-.religionbrokdown{
+.religionb{
      display: none;
      Position: absolute;
      background: white;
