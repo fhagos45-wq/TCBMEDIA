@@ -1,204 +1,148 @@
-
-.tigraylogo{
-     display:flex;
-    width:100px;
-    height:50px;
-    top:2%;
-    right:15%;
-    position:fixed;
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, sans-serif;
+body {
+    background: #f0f2f5;
+    color: #0d1b2a;
 }
 
-body{
-    background:#f8f9fc;
+/* --- Header --- */
+.main-header {
+    background: #0d1b2a;
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #00c6ff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Navbar */
-header{
-    background:#0d1b2a;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 50px;
+.main-tcb-logo {
+    height: 55px;
+    width: auto;
 }
 
-.logo{
-    font-size:30px;
-    font-weight:bold;
-    color:#00c6ff;
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
 }
 
-nav ul{
-    display:flex;
-    list-style:none;
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
 }
 
-nav ul li{
-    margin:0 15px;
+/* --- Login & Register Card (The Sweet Look) --- */
+.auth-welcome-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 40px;
+    border: 1px solid #e0e0e0;
 }
 
-nav ul li a{
-    color:white;
-    text-decoration:none;
+.auth-welcome-card h1 {
+    font-size: 30px;
+    color: #0d1b2a;
+    margin-bottom: 10px;
 }
 
-.logout-btn{
-    background:red;
-    color:white;
-    border:none;
-    padding:10px 20px;
-    cursor:pointer;
-    border-radius:5px;
+.auth-action-area {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
-/* Hero */
-.hero{
-    height:90vh;
-    background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url('https://via.placeholder.com/1500x800');
-    background-size:cover;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
+.btn-login-main {
+    background: #00c6ff;
+    color: white;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.hero h1{
-    font-size:60px;
+.btn-register-main {
+    background: #0d1b2a;
+    color: white;
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.hero p{
-    margin:20px 0;
-    font-size:20px;
+.btn-login-main:hover, .btn-register-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
 }
 
-.hero button{
-    padding:12px 30px;
-    background:#00c6ff;
-    border:none;
-    color:white;
-    border-radius:5px;
-    cursor:pointer;
+.divider {
+    color: #888;
+    font-style: italic;
 }
 
-/* Sections */
-.news-section,
-.about{
-    padding:60px;
-    text-align:center;
+/* --- Column Layout --- */
+.page-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
+    gap: 25px;
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 20px;
 }
 
-.cards{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-top:30px;
+.ad-box {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
 }
 
-.card{
-    background:white;
-    width:300px;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+.center-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
 }
 
-.community-section{
-    background:#00c6ff;
-    color:white;
-    text-align:center;
-    padding:70px;
+.content-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
 }
 
-.community-section button{
-    margin-top:20px;
-    padding:12px 25px;
-    border:none;
-    background:white;
-    color:#00c6ff;
-    font-weight:bold;
-    cursor:pointer;
+.main-footer {
+    background: #0d1b2a;
+    color: white;
+    text-align: center;
+    padding: 30px;
 }
 
-/* Footer */
-footer{
-    background:#0d1b2a;
-    color:white;
-    text-align:center;
-    padding:20px;
+/* Mobile responsive for your Redmi 11 */
+@media (max-width: 900px) {
+    .page-layout { grid-template-columns: 1fr; }
+    .ad-sidebar { display: none; }
+    .main-header { flex-direction: column; gap: 10px; }
 }
-
-/* Logout Modal */
-.logout-modal{
-    display:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.7);
-    justify-content:center;
-    align-items:center;
-}
-
-.modal-content{
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    text-align:center;
-}
-
-.yes-btn{
-    background:red;
-    color:white;
-    border:none;
-    padding:10px 20px;
-    margin:10px;
-}
-
-.no-btn{
-    background:gray;
-    color:white;
-    border:none;
-    padding:10px 20px;
-}
-
-/* Responsive */
-@media(max-width:768px){
-    header{
-        flex-direction:column;
-    }
-
-    nav ul{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .hero h1{
-        font-size:35px;
-    }
-}
-.communityb{
-     position: relative;
-     display: inline-block;
-}
-.religionb{
-     display: none;
-     Position: absolute;
-     background: red;
-     color: green;
-}
-
-.communityb:hover .religionb{
-     display:block;
-}
-
