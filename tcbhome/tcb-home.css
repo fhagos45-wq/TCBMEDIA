@@ -21,7 +21,7 @@ body {
 }
 
 /* HEADER */
-.header {
+.home-header {
     height: 80px;
     display: flex;
     align-items: center;
