@@ -1,141 +1,103 @@
-/* General Styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
-}
-
-body {
-    background: #f4f7f9;
-    color: #0d1b2a;
-}
-
-/* --- Redesigned Responsive Header --- */
+/* --- Header Cleanup --- */
 .main-header {
     background: #0d1b2a;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 4px solid #00c6ff;
     position: sticky;
     top: 0;
     z-index: 1000;
-    width: 100%;
-}
-
-.header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 5%;
-    border-bottom: 1px solid #1e293b;
 }
 
 .main-tcb-logo {
-    height: 45px;
+    height: 50px; /* Made slightly larger for better visibility */
     width: auto;
 }
 
-.social-links {
-    display: flex;
-    gap: 15px;
+/* --- Beautiful King Footer --- */
+.main-footer {
+    background: #0d1b2a; /* Your signature navy */
+    color: white;
+    padding: 60px 20px 30px;
+    border-top: 5px solid #00c6ff;
+    text-align: center;
+    margin-top: 50px;
 }
 
-.social-links a {
-    color: #00c6ff;
+.footer-social-header h3 {
     font-size: 20px;
-    transition: 0.3s;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: #00c6ff;
+    text-transform: uppercase;
 }
 
-/* --- Bottom Navigation Row --- */
-.header-nav-bottom {
-    padding: 10px 5%;
-}
-
-.nav-menu {
-    list-style: none;
+.footer-icons {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allows links to wrap to next line on mobile */
-    gap: 15px;
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-.nav-menu li a {
+/* Designing the Social Buttons */
+.social-btn {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 198, 255, 0.4);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
+    font-size: 24px;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 14px;
-    transition: 0.3s;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.nav-menu li a:hover, .nav-menu li a.active {
-    color: #00c6ff;
-}
-
-.login-link {
+.social-btn:hover {
     background: #00c6ff;
-    padding: 5px 15px;
-    border-radius: 4px;
-    color: #0d1b2a !important;
-    font-weight: bold !important;
+    color: #0d1b2a;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 198, 255, 0.5);
+    border-color: #ffffff;
 }
 
-/* --- Mobile and Tablet Specific Fixes --- */
-@media (max-width: 768px) {
-    .header-top {
-        flex-direction: row; /* Keep logo and social links side by side */
-        justify-content: space-between;
+.footer-bottom-text {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* Responsive Fix for Mobile & Tablet */
+@media (max-width: 900px) {
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 2%;
     }
 
     .nav-menu {
-        gap: 10px;
+        flex-wrap: wrap;
         justify-content: center;
+        gap: 12px;
     }
 
-    .nav-menu li a {
-        font-size: 13px; /* Smaller text to fit all links */
+    .social-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
     }
 
     .page-layout {
-        grid-template-columns: 1fr; /* Single column for content */
-        margin: 20px auto;
+        grid-template-columns: 1fr;
+        padding: 10px;
     }
 
     .ad-side {
-        display: none; /* Hide ads on small mobile screens */
+        display: none;
     }
-
-    .auth-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .btn-primary, .btn-secondary {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-/* --- Desktop Layout --- */
-@media (min-width: 1024px) {
-    .page-layout {
-        display: grid;
-        grid-template-columns: 200px 1fr 200px;
-        gap: 30px;
-        max-width: 1400px;
-        margin: 40px auto;
-    }
-}
-
-/* Other card and footer styles remain consistent */
-.main-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.footer {
-    background: #0d1b2a;
-    color: #666;
-    text-align: center;
-    padding: 20px;
 }
