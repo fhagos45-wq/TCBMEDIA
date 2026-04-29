@@ -4,19 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TCB Platform | Home</title>
+
+    <!-- Main CSS -->
     <link rel="stylesheet" href="tcb.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- Header -->
     <header class="main-header">
         <div class="header-left">
-            <img src="best logo.jpg" alt="TCB Logo" class="main-tcb-logo">
+            <img src="tigraytcb.png" alt="TCB Logo" class="main-tcb-logo">
         </div>
 
         <nav class="header-nav">
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            </div>
+
             <ul class="nav-menu">
-                <li><a href="tcbhome/tcb-home.html" class="nav-link active">Home</a></li>
+                <li><a href="tcbhome/tcb-home.html">Home</a></li>
                 <li><a href="news/news.html">News</a></li>
                 <li><a href="academy/academy.html">Academy</a></li>
                 <li><a href="community/community.html">Community</a></li>
@@ -27,50 +39,104 @@
         </nav>
     </header>
 
+    <!-- Main Layout -->
     <div class="page-layout">
+
+        <!-- Left Ad -->
         <aside class="ad-side">
-            <div class="ad-placeholder">Advertisement</div>
+            <div class="ad-placeholder">
+                Advertisement
+            </div>
         </aside>
 
+        <!-- Main Content -->
         <main class="main-content">
+
             <section class="welcome-card">
                 <h1>Join the TCB Community</h1>
-                <p>Access the latest news and expert education in one place.</p>
+                <p>
+                    Access the latest news and expert education in one place.
+                </p>
+
                 <div class="auth-buttons">
-                    <a href="tcbhome/tcb-home.html" class="btn-primary">Login to Account</a>
-                    <a href="register.html" class="btn-secondary">Create New Account</a>
+                    <a href="login.html" class="btn-primary">
+                        Login to Account
+                    </a>
+
+                    <a href="register.html" class="btn-secondary">
+                        Create New Account
+                    </a>
                 </div>
             </section>
 
-            <section id="news" class="info-section">
+            <section class="info-section">
                 <h2>Latest from TCB News</h2>
+
                 <div class="news-item">
                     <span class="tag">Post</span>
                     <h3>Stay Informed Globally</h3>
-                    <p>We bring you the most important updates from around the world.</p>
+                    <p>
+                        We bring you the most important updates from around the world.
+                    </p>
                 </div>
             </section>
+
         </main>
 
+        <!-- Right Ad -->
         <aside class="ad-side">
-            <div class="ad-placeholder tall">Partner Ads</div>
+            <div class="ad-placeholder tall">
+                Partner Ads
+            </div>
         </aside>
+
     </div>
 
-    <footer class="main-footer">
-        <div class="footer-content">
+    <!-- New Premium Footer -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+                <img src="tigraytcb.png" alt="TCB Logo" class="footer-logo">
+
+                <p>
+                    TCB Platform connects people through education,
+                    news, and global community engagement.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="tcbhome/tcb-home.html">Home</a></li>
+                    <li><a href="news/news.html">News</a></li>
+                    <li><a href="academy/academy.html">Academy</a></li>
+                    <li><a href="community/community.html">Community</a></li>
+                    <li><a href="about/about.html">About</a></li>
+                    <li><a href="contact/contact.html">Contact</a></li>
+                </ul>
+            </div>
+
             <div class="footer-social">
-                <h3>Follow Our Community</h3>
-                <div class="social-icons">
-                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <h3>Follow Us</h3>
+
+                <div class="footer-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <p>© 2026 TCB Platform | All Rights Reserved</p>
-            </div>
+
         </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 TCB Platform | All Rights Reserved</p>
+        </div>
+
     </footer>
 
 </body>
