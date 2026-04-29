@@ -1,7 +1,19 @@
-/* --- Header Cleanup --- */
+/* Keep all your existing header and card styles exactly as they were */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background: #f4f7f9;
+    color: #0d1b2a;
+}
+
 .main-header {
     background: #0d1b2a;
-    padding: 15px 5%;
+    padding: 10px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,92 +24,92 @@
 }
 
 .main-tcb-logo {
-    height: 50px; /* Made slightly larger for better visibility */
+    height: 50px;
     width: auto;
 }
 
-/* --- Beautiful King Footer --- */
-.main-footer {
-    background: #0d1b2a; /* Your signature navy */
-    color: white;
-    padding: 60px 20px 30px;
-    border-top: 5px solid #00c6ff;
-    text-align: center;
-    margin-top: 50px;
-}
-
-.footer-social-header h3 {
-    font-size: 20px;
-    letter-spacing: 2px;
-    margin-bottom: 30px;
-    color: #00c6ff;
-    text-transform: uppercase;
-}
-
-.footer-icons {
+.nav-menu {
+    list-style: none;
     display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 40px;
-}
-
-/* Designing the Social Buttons */
-.social-btn {
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 198, 255, 0.4);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    gap: 20px;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link {
+    background: #00c6ff;
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: #0d1b2a !important;
+    font-weight: bold !important;
+}
+
+/* --- NEW FULL FOOTER DESIGN --- */
+.main-footer {
+    background: #0d1b2a;
+    color: white;
+    padding: 40px 20px;
+    margin-top: 50px;
+    border-top: 4px solid #00c6ff;
+    text-align: center;
+}
+
+.footer-social h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #00c6ff;
+    letter-spacing: 1px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.social-icons a {
     color: white;
     font-size: 24px;
+    transition: 0.3s;
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.social-btn:hover {
-    background: #00c6ff;
-    color: #0d1b2a;
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 198, 255, 0.5);
-    border-color: #ffffff;
+.social-icons a:hover {
+    color: #00c6ff;
+    transform: translateY(-5px);
 }
 
-.footer-bottom-text {
+.footer-copyright {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 25px;
+    padding-top: 20px;
     font-size: 14px;
     color: #888;
 }
 
-/* Responsive Fix for Mobile & Tablet */
-@media (max-width: 900px) {
-    .main-header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 2%;
-    }
+/* Keep your responsive grid styles */
+.page-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 30px;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
 
-    .nav-menu {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
+.main-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+}
 
-    .social-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-    }
-
-    .page-layout {
-        grid-template-columns: 1fr;
-        padding: 10px;
-    }
-
-    .ad-side {
-        display: none;
-    }
+@media (max-width: 1000px) {
+    .page-layout { grid-template-columns: 1fr; }
+    .ad-side { display: none; }
+    .main-header { flex-direction: column; gap: 15px; }
 }
