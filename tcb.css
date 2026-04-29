@@ -1,4 +1,3 @@
-/* General Styling */
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +6,14 @@
 }
 
 body {
-    background: #f0f2f5;
+    background: #f4f7f9;
     color: #0d1b2a;
 }
 
-/* --- Header --- */
+/* --- Premium Header & Social Nav --- */
 .main-header {
-    background: #0d1b2a;
-    padding: 10px 40px;
+    background: #0d1b2a; /* Your signature navy */
+    padding: 10px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,124 +24,163 @@ body {
 }
 
 .main-tcb-logo {
-    height: 55px;
+    height: 60px;
     width: auto;
 }
 
-.nav-links {
-    list-style: none;
+.header-nav {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: 40px;
 }
 
-.nav-links li a {
+.social-links {
+    display: flex;
+    gap: 20px;
+    border-right: 1px solid #334155;
+    padding-right: 25px;
+}
+
+.social-links a {
+    color: #00c6ff;
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: white;
+    transform: scale(1.2);
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-menu li a {
     color: white;
     text-decoration: none;
     font-weight: 500;
+    transition: 0.3s;
 }
 
-/* --- Login & Register Card (The Sweet Look) --- */
-.auth-welcome-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    padding: 40px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    margin-bottom: 40px;
-    border: 1px solid #e0e0e0;
+.nav-menu li a:hover {
+    color: #00c6ff;
 }
 
-.auth-welcome-card h1 {
-    font-size: 30px;
-    color: #0d1b2a;
-    margin-bottom: 10px;
-}
-
-.auth-action-area {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.btn-login-main {
+.login-link {
     background: #00c6ff;
-    color: white;
-    width: 100%;
-    max-width: 300px;
-    padding: 15px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: 0.3s;
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: #0d1b2a !important;
+    font-weight: bold !important;
 }
 
-.btn-register-main {
-    background: #0d1b2a;
-    color: white;
-    width: 100%;
-    max-width: 300px;
-    padding: 15px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn-login-main:hover, .btn-register-main:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
-}
-
-.divider {
-    color: #888;
-    font-style: italic;
-}
-
-/* --- Column Layout --- */
+/* --- Content Layout --- */
 .page-layout {
     display: grid;
-    grid-template-columns: 220px 1fr 220px;
-    gap: 25px;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 30px;
     max-width: 1400px;
-    margin: 30px auto;
+    margin: 40px auto;
     padding: 0 20px;
 }
 
-.ad-box {
+.ad-placeholder {
     background: white;
     border: 1px solid #ddd;
+    height: 300px;
     border-radius: 8px;
-    min-height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ccc;
+    color: #999;
+    font-size: 14px;
 }
 
-.center-content {
+.ad-placeholder.tall { height: 600px; }
+
+/* --- Central Cards --- */
+.main-content {
     background: white;
-    padding: 30px;
-    border-radius: 12px;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.content-section {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
+.welcome-card {
+    text-align: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #eee;
 }
 
-.main-footer {
+.welcome-card h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.auth-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #00c6ff;
+    color: white;
+}
+
+.btn-secondary {
     background: #0d1b2a;
     color: white;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.info-section {
+    margin-top: 40px;
+}
+
+.news-item {
+    background: #f8f9fa;
+    padding: 20px;
+    margin-top: 20px;
+    border-left: 5px solid #00c6ff;
+}
+
+.tag {
+    background: #00c6ff;
+    color: white;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+.footer {
+    background: #0d1b2a;
+    color: #666;
     text-align: center;
     padding: 30px;
 }
 
-/* Mobile responsive for your Redmi 11 */
-@media (max-width: 900px) {
+/* Mobile Responsive */
+@media (max-width: 1000px) {
     .page-layout { grid-template-columns: 1fr; }
-    .ad-sidebar { display: none; }
-    .main-header { flex-direction: column; gap: 10px; }
+    .ad-side { display: none; }
+    .header-nav { flex-direction: column; gap: 15px; }
+    .social-links { border-right: none; padding-right: 0; }
 }
