@@ -1,87 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCB Homepage</title>
+    <title>TCB</title>
     <link rel="stylesheet" href="tcb.css">
 </head>
-
 <body>
-   
-    <!-- Navbar -->
-    <header>
-        <div class="logo">TCB</div>
 
-       
+    <header class="main-header">
+        <div class="header-left">
+            <img src="best logo.jpg" alt="TCB Logo" class="main-tcb-logo">
+        </div>
 
-        <button class="logout-btn" onclick="openLogout()">Logout</button>
+        <nav class="header-right">
+            <ul class="nav-links">
+                <li><a href="#news">News</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to TCB Platform</h1>
-            <p>Your destination for news, community growth, and global opportunities.</p>
-            <button>Explore Now</button>
-        </div>
-    </section>
-
-    <!-- News Section -->
-    <section class="news-section">
-        <h2>Latest News</h2>
-
-        <div class="cards">
-            <div class="card">
-                <h3>Breaking News</h3>
-                <p>Stay updated with global headlines and current events.</p>
+    <div class="page-layout">
+        
+        <aside class="ad-sidebar">
+            <div class="ad-box">
+                <span>Advertisement</span>
             </div>
+        </aside>
 
-            <div class="card">
-                <h3>Business News</h3>
-                <p>Discover financial and business market trends.</p>
+        <main class="center-content">
+            
+            <section class="auth-welcome-card">
+                <h1>Welcome to TCB Platform</h1>
+                <p>Join our community today to access exclusive news and educational content.</p>
+                
+                <div class="auth-action-area">
+                    <a href="login.html" class="btn-login-main">Log In</a>
+                    <div class="divider">or</div>
+                    <a href="register.html" class="btn-register-main">Create New Account</a>
+                </div>
+            </section>
+
+            <section id="about" class="content-section">
+                <h2>About TCB</h2>
+                <p>TCB is your digital gateway for <strong>TCB News</strong> and <strong>TCB Academy</strong>. We provide high-quality information and learning tools for everyone.</p>
+            </section>
+
+            <section id="news" class="content-section">
+                <h2>Latest News</h2>
+                <div class="post-card">
+                    <div class="post-tag">New</div>
+                    <h3>Start Your Journey</h3>
+                    <p>Learn how to use our platform to improve your skills and stay updated with global news.</p>
+                </div>
+            </section>
+
+        </main>
+
+        <aside class="ad-sidebar">
+            <div class="ad-box tall">
+                <span>Your Ad Here</span>
             </div>
+        </aside>
 
-            <div class="card">
-                <h3>Technology News</h3>
-                <p>Explore innovation and digital transformation stories.</p>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- Community Section -->
-    <section class="community-section">
-        <h2>TCB Community</h2>
-        <p>Connect with people, join discussions, and grow your network.</p>
-        <button>Join Community</button>
-    </section>
-
-    <!-- About Section -->
-    <section class="about">
-        <h2>About TCB</h2>
-        <p>
-            TCB is a modern digital platform combining journalism, community engagement,
-            education, and innovation.
-        </p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
+    <footer class="main-footer">
         <p>© 2026 TCB Platform | All Rights Reserved</p>
     </footer>
 
-    <!-- Logout Modal -->
-    <div class="logout-modal" id="logoutModal">
-        <div class="modal-content">
-            <h2>Logout</h2>
-            <p>Are you sure you want to logout?</p>
-            <button class="yes-btn" onclick="logout()">Yes</button>
-            <button class="no-btn" onclick="closeLogout()">Cancel</button>
-        </div>
-    </div>
-
-    <script src="tcb.js"></script>
 </body>
-
-</html
+</html>
