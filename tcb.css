@@ -173,7 +173,8 @@
     .side-panel { display: none; }
 
 .masterlogo{
-  width:50px;
+display:flex;
+    width:50px;
     height:50px;
     
 }
