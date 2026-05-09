@@ -6,38 +6,24 @@
     <title>TCB News | Premium Split Layout</title>
     <link rel="stylesheet" href="tcb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="tcb.js"></script>
 </head>
 <body>
 
 <div class="site-container">
-    <!-- Header -->
     <header class="top-bar">
         <div class="content-wrapper header-inner">
             <img src="tigraytcb.png" alt="TCB Logo" class="nav-logo">
             
             <nav class="navigation">
-               <!--<ul class="nav-links">
-                    <li><a href="tcb.html">Home</a></li>
-                  <a href="https://fhagos45-wq.github.io/TCBMEDIA/news/news.html" class="nav-link">News</a>
-         <a href="https://fhagos45-wq.github.io/TCBMEDIA/academy/academy.html" class="nav-link">Academy</a>
-         <a href="https://fhagos45-wq.github.io/TCBMEDIA/community/community.html" class="nav-link">Community</a>
-                
-                </ul>-->
                 <div class="user-actions">
                     <a href="https://fhagos45-wq.github.io/TCBMEDIA/tcbhome/tcb-home.html" class="btn-outline">Login</a>
-                    <a href="create-acount.html" class="btn-fill">Create Account</a>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Beautiful Split Body -->
     <div class="content-wrapper body-grid">
         
-        <!-- Left Advertisement Side -->
         <aside class="side-panel left-panel">
             <div class="ad-label-top">ADVERTISEMENT</div>
             <div class="ad-content-box">
@@ -45,32 +31,35 @@
             </div>
         </aside>
 
-        <!-- Center News Section (Separated by Lines) -->
         <main class="center-news">
             <div class="news-header-title">
-                <h2><i class="fas fa-newspaper"></i> TCB News Center</h2>
-       
+                <h2><i class="fas fa-user-plus"></i> Join TCB Platform</h2>
             </div>
             
-            <article class="premium-news-card">
-                <div class="card-image">
-                    <span class="category-tag">World News</span>
-                </div>
-                <div class="card-details">
-                    <h1>Global News Platform Optimized</h1>
-                    <p>Experience the latest updates with our newly designed news interface, optimized for high speed and better readability[cite: 3].</p>
-                    <a href="#" class="action-link">Full Story <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </article>
+            <section class="registration-section">
+                <form id="tcbRegistrationForm">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" name="fullname" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Create a password" required>
+                    </div>
+                    <button type="submit" class="btn-fill">Create My Account</button>
+                </form>
+            </section>
 
-            <!-- Example for another news item -->
-            <article class="mini-news">
+            <article class="mini-news" style="margin-top: 30px;">
                 <h3>Academy Updates: Online Learning</h3>
-                <p>New courses are now live on the TCB Academy platform[cite: 3].</p>
+                <p>New courses are now live on the TCB Academy platform.</p>
             </article>
         </main>
 
-        <!-- Right Advertisement Side -->
         <aside class="side-panel right-panel">
             <div class="ad-label-top">PARTNERS</div>
             <div class="ad-content-box">
@@ -80,26 +69,27 @@
 
     </div>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="content-wrapper footer-flex">
             <div class="footer-left">
                 <img src="tigraytcb.png" alt="TCB Logo" class="footer-logo">
-                <p>Connecting the world through TCB News and Academy[cite: 3].</p>
+                <p>Connecting the world through TCB News and Academy.</p>
             </div>
             <div class="footer-right">
                 <div class="social-box">
                     <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
                     <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/tiktokstudio"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.tiktok.com/"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
         <div class="bottom-bar">
-            <p>© 2026 TCB Platform | All Rights Reserved[cite: 3]</p>
+            <p>© 2026 TCB Platform | All Rights Reserved</p>
         </div>
     </footer>
 </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="tcb.js"></script>
 </body>
 </html>
