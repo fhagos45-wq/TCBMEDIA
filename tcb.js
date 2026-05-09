@@ -1,37 +1,40 @@
-function openLogout(){
-    document.getElementById("logoutModal").style.display = "flex";
-}
-
-function closeLogout(){
-    document.getElementById("logoutModal").style.display = "none";
-}
-
-function logout(){
-    alert("You have logged out successfully!");
-    window.location.href = "login.html";
-}
-
-// 1. Connection settings
-const _supabase = supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_ANON_KEY');
+// 1. Connection settings (Replace the text in quotes with your actual keys from Supabase)
+const supabaseUrl = 'YOUR_SUPABASE_URL'; 
+const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 const form = document.querySelector("form");
 
 form.addEventListener("submit", async function(e) {
-    e.preventDefault(); // This stops the page from refreshing
+    e.preventDefault(); // Stop the page from refreshing
 
-    // Get values from your tcb.html inputs
+    // Capture the data from your tcb.html inputs
     const fullname = document.querySelector('input[name="fullname"]').value;
     const email = document.querySelector('input[name="email"]').value;
+    const password = document.querySelector('input[name="password"]').value;
 
-    // 2. Send the data to your "profiles" table in Supabase
+    // 2. Original Password Check
+    if (password.length < 6) {
+        alert("Password must be at least 6 characters");
+        return; // Stop the code here if password is too short
+    }
+
+    // 3. Send the data to your Supabase "profiles" table
     const { data, error } = await _supabase
         .from('profiles')
-        .insert([{ full_name: fullname, email: email }]);
+        .insert([
+            { 
+                full_name: fullname, 
+                email: email 
+            }
+        ]);
 
     if (error) {
+        // If there is a problem, show the error
         alert("Error: " + error.message);
     } else {
-        alert("Success! " + fullname + " is now in your database.");
-        form.reset(); // Clears the form for the next user
+        // If it works, show success and clear the form
+        alert("Success! " + fullname + " is now registered.");
+        form.reset(); 
     }
 });
