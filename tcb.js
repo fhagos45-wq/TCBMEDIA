@@ -1,25 +1,28 @@
-// 1. Connection settings (Replace the text in quotes with your actual keys from Supabase)
-const supabaseUrl = 'YOUR_SUPABASE_URL'; 
-const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+// 1. Connection settings
+// Go to Supabase Dashboard > Settings > API to find these.
+// Make sure the URL starts with https://
+const supabaseUrl = 'YOUR_ACTUAL_SUPABASE_URL_HERE'; 
+const supabaseKey = 'YOUR_ACTUAL_ANON_KEY_HERE';
+
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 const form = document.querySelector("form");
 
 form.addEventListener("submit", async function(e) {
-    e.preventDefault(); // Stop the page from refreshing
+    e.preventDefault(); // Prevents the page from refreshing
 
-    // Capture the data from your tcb.html inputs
+    // Get values from your tcb.html inputs
     const fullname = document.querySelector('input[name="fullname"]').value;
     const email = document.querySelector('input[name="email"]').value;
     const password = document.querySelector('input[name="password"]').value;
 
-    // 2. Original Password Check
+    // 2. Security Check: Password must be 6+ characters
     if (password.length < 6) {
         alert("Password must be at least 6 characters");
-        return; // Stop the code here if password is too short
+        return; 
     }
 
-    // 3. Send the data to your Supabase "profiles" table
+    // 3. Send data to the "profiles" table
     const { data, error } = await _supabase
         .from('profiles')
         .insert([
@@ -30,10 +33,10 @@ form.addEventListener("submit", async function(e) {
         ]);
 
     if (error) {
-        // If there is a problem, show the error
+        // This will tell you if there is a database error
         alert("Error: " + error.message);
     } else {
-        // If it works, show success and clear the form
+        // This confirms the account is created
         alert("Success! " + fullname + " is now registered.");
         form.reset(); 
     }
