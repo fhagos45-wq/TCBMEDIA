@@ -1,43 +1,34 @@
-// 1. Connection settings
-// Go to Supabase Dashboard > Settings > API to find these.
-// Make sure the URL starts with https://
-const supabaseUrl = 'YOUR_ACTUAL_SUPABASE_URL_HERE'; 
-const supabaseKey = 'YOUR_ACTUAL_ANON_KEY_HERE';
+// Paste your link here inside the quotes
+const supabaseUrl = 'https://ohtmlhoclszmumexjzrz.supabase.co'; 
+
+// Use your publishable key from the screenshot here
+const supabaseKey = 'sb_publishable_QAG-SyXm9NzZCrSrplu5KQ_xXbk06mIof_YvG-67q4v';
 
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
 const form = document.querySelector("form");
 
 form.addEventListener("submit", async function(e) {
-    e.preventDefault(); // Prevents the page from refreshing
+    e.preventDefault(); 
 
-    // Get values from your tcb.html inputs
     const fullname = document.querySelector('input[name="fullname"]').value;
     const email = document.querySelector('input[name="email"]').value;
     const password = document.querySelector('input[name="password"]').value;
 
-    // 2. Security Check: Password must be 6+ characters
     if (password.length < 6) {
         alert("Password must be at least 6 characters");
         return; 
     }
 
-    // 3. Send data to the "profiles" table
+    // This sends data to your "profiles" table
     const { data, error } = await _supabase
         .from('profiles')
-        .insert([
-            { 
-                full_name: fullname, 
-                email: email 
-            }
-        ]);
+        .insert([{ full_name: fullname, email: email }]);
 
     if (error) {
-        // This will tell you if there is a database error
         alert("Error: " + error.message);
     } else {
-        // This confirms the account is created
-        alert("Success! " + fullname + " is now registered.");
+        alert("Success! Account created for " + fullname);
         form.reset(); 
     }
 });
