@@ -171,4 +171,11 @@
 @media (max-width: 1000px) {
     .body-grid { grid-template-columns: 1fr; }
     .side-panel { display: none; }
+
+.masterlogo{
+    position:
+        display: flex;
+    
+}
+    
 }
