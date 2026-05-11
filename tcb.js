@@ -2,7 +2,7 @@ const supabaseUrl = 'https://qruvqejwguwivvpomtki.supabase.co';
 const supabaseKey = 'sb_publishable_JXH1vjJjK03URYbJlHcLGA_9c12RqPm';
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-// 1. UI Toggle Logic
+// UI Toggle Logic
 function showForm(type) {
     const regSection = document.getElementById('registration-section');
     const loginSection = document.getElementById('login-section');
@@ -22,7 +22,7 @@ function showForm(type) {
     }
 }
 
-// 2. Handle Registration
+// Handle Registration
 async function handleRegistration(e) {
     e.preventDefault();
     const form = e.target;
@@ -34,14 +34,14 @@ async function handleRegistration(e) {
         .insert([{ full_name: name, email: email }]);
 
     if (error) {
-        alert("Registration Error: " + error.message);
+        alert("Error: " + error.message);
     } else {
-        alert("Account Created! Welcome " + name);
+        alert("Welcome, " + name + "!");
         window.location.href = "https://fhagos45-wq.github.io/TCBMEDIA/tcbhome/tcb-home.html";
     }
 }
 
-// 3. Handle Login (Basic Email Check Example)
+// Handle Login
 async function handleLogin(e) {
     e.preventDefault();
     const email = e.target.querySelector('input[name="loginEmail"]').value;
@@ -52,10 +52,10 @@ async function handleLogin(e) {
         .eq('email', email);
 
     if (data && data.length > 0) {
-        alert("Login Successful!");
+        alert("Signed in successfully!");
         window.location.href = "https://fhagos45-wq.github.io/TCBMEDIA/tcbhome/tcb-home.html";
     } else {
-        alert("Account not found. Please register first.");
+        alert("Email not found. Please register.");
     }
 }
 
