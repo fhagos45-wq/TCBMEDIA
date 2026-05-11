@@ -29,7 +29,16 @@ async function handleRegistration(e) {
         alert("Error: " + error.message);
     } else {
         console.log("Success!");
+        alert("if (error) {
+        console.error("Supabase Error:", error.message);
+        alert("Error: " + error.message);
+    } else {
+        console.log("Success!");
         alert("Success! Welcome to TCB Media, " + name);
+        
+        // This is the new line that sends the user to the home page
+        window.location.href = "https://fhagos45-wq.github.io/TCBMEDIA/tcbhome/tcb-home.html";
+    }, " + name);
         form.reset();
     }
 }
