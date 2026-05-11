@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCB News | Join the Community</title>
+    <title>TCB News | Authentication Portal</title>
     <link rel="stylesheet" href="tcb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -15,134 +15,86 @@
             <img src="tigraytcb.png" alt="TCB Logo" class="nav-logo">
             <nav class="navigation">
                 <div class="user-actions">
-                    <!-- Toggle buttons for desktop nav -->
                     <button onclick="showForm('login')" class="btn-outline">Login</button>
-                    <button onclick="showForm('register')" class="btn-fill-small">Sign Up</button>
+                    <button onclick="showForm('register')" class="btn-fill">Join Now</button>
                 </div>
             </nav>
         </div>
     </header>
 
     <div class="content-wrapper body-grid">
-        
         <aside class="side-panel left-panel">
             <div class="ad-label-top">ADVERTISEMENT</div>
-            <div class="ad-content-box">
-                <p>Space for your Ads</p>
-            </div>
+            <div class="ad-content-box"><p>Promoted Content</p></div>
         </aside>
 
         <main class="center-news">
-            <div class="form-card">
-                <!-- Toggle Tabs -->
-                <div class="form-toggle">
-                    <button id="tab-register" class="active" onclick="showForm('register')">Create Account</button>
-                    <button id="tab-login" onclick="showForm('login')">Login</button>
+            <div class="auth-card">
+                <div class="auth-tabs">
+                    <button id="tab-register" class="tab-btn active" onclick="showForm('register')">Register</button>
+                    <button id="tab-login" class="tab-btn" onclick="showForm('login')">Login</button>
                 </div>
 
-                <!-- Registration Section -->
-                <section id="registration-section" class="form-container">
-                    <div class="news-header-title">
-                        <h2><i class="fas fa-user-plus"></i> Join TCB Platform</h2>
+                <div id="registration-section" class="form-wrapper">
+                    <div class="form-header">
+                        <h2>Create Account</h2>
+                        <p>Join the TCB community today.</p>
                     </div>
                     <form id="tcbRegistrationForm">
                         <div class="input-group">
                             <label><i class="fas fa-user"></i> Full Name</label>
-                            <input type="text" name="fullname" placeholder="Enter your name" required>
+                            <input type="text" name="fullname" placeholder="John Doe" required>
                         </div>
                         <div class="input-group">
-                            <label><i class="fas fa-envelope"></i> Email Address</label>
-                            <input type="email" name="email" placeholder="Enter your email" required>
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" name="email" placeholder="email@example.com" required>
                         </div>
                         <div class="input-group">
                             <label><i class="fas fa-lock"></i> Password</label>
-                            <input type="password" name="password" placeholder="Create a password" required>
+                            <input type="password" name="password" placeholder="••••••••" required>
                         </div>
-                        <button type="submit" class="btn-fill">Create My Account</button>
+                        <button type="submit" class="btn-submit">Sign Up</button>
                     </form>
-                </section>
+                </div>
 
-                <!-- Login Section (Hidden by default) -->
-                <section id="login-section" class="form-container" style="display: none;">
-                    <div class="news-header-title">
-                        <h2><i class="fas fa-sign-in-alt"></i> Welcome Back</h2>
+                <div id="login-section" class="form-wrapper" style="display: none;">
+                    <div class="form-header">
+                        <h2>Welcome Back</h2>
+                        <p>Access your TCB dashboard.</p>
                     </div>
                     <form id="tcbLoginForm">
                         <div class="input-group">
-                            <label><i class="fas fa-envelope"></i> Email Address</label>
-                            <input type="email" name="loginEmail" placeholder="Enter your email" required>
+                            <label><i class="fas fa-envelope"></i> Email</label>
+                            <input type="email" name="loginEmail" placeholder="email@example.com" required>
                         </div>
                         <div class="input-group">
                             <label><i class="fas fa-lock"></i> Password</label>
-                            <input type="password" name="loginPassword" placeholder="Enter password" required>
+                            <input type="password" name="loginPassword" placeholder="••••••••" required>
                         </div>
-                        <button type="submit" class="btn-fill">Login Now</button>
-                        <div class="form-footer">
-                            <a href="#">Forgot Password?</a>
-                        </div>
+                        <button type="submit" class="btn-submit">Login</button>
                     </form>
-                </section>
+                </div>
             </div>
-
-            <article class="mini-news" style="margin-top: 30px;">
-                <h3>Academy Updates: Online Learning</h3>
-                <p>New courses are now live on the TCB Academy platform.</p>
-            </article>
         </main>
 
         <aside class="side-panel right-panel">
             <div class="ad-label-top">PARTNERS</div>
-            <div class="ad-content-box">
-                <p>Partner Promotions</p>
-            </div>
+            <div class="ad-content-box"><p>Partner Ads</p></div>
         </aside>
-
     </div>
 
     <footer class="main-footer">
         <div class="content-wrapper footer-flex">
-            <div class="footer-left">
-                <img src="tigraytcb.png" alt="TCB Logo" class="footer-logo">
-                <p>Connecting the world through TCB News and Academy.</p>
+            <p>© 2026 TCB Platform | Connecting the world.</p>
+            <div class="social-box">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            <div class="footer-right">
-                <div class="social-box">
-                    <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
-                    <a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/"><i class="fab fa-tiktok"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="bottom-bar">
-            <p>© 2026 TCB Platform | All Rights Reserved</p>
         </div>
     </footer>
 </div>
 
-<script>
-    // Simple toggle logic for switching forms
-    function showForm(type) {
-        const regSection = document.getElementById('registration-section');
-        const loginSection = document.getElementById('login-section');
-        const regTab = document.getElementById('tab-register');
-        const loginTab = document.getElementById('tab-login');
-
-        if (type === 'login') {
-            regSection.style.display = 'none';
-            loginSection.style.display = 'block';
-            loginTab.classList.add('active');
-            regTab.classList.remove('active');
-        } else {
-            regSection.style.display = 'block';
-            loginSection.style.display = 'none';
-            regTab.classList.add('active');
-            loginTab.classList.remove('active');
-        }
-    }
-</script>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="tcb.js"></script>
-
 </body>
 </html>
