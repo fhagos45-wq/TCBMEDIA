@@ -1,50 +1,65 @@
-// 1. Supabase Connection Details
 const supabaseUrl = 'https://qruvqejwguwivvpomtki.supabase.co';
 const supabaseKey = 'sb_publishable_JXH1vjJjK03URYbJlHcLGA_9c12RqPm';
-
-// 2. Initialize the Supabase Client
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-// 3. The Registration Function
+// 1. UI Toggle Logic
+function showForm(type) {
+    const regSection = document.getElementById('registration-section');
+    const loginSection = document.getElementById('login-section');
+    const regTab = document.getElementById('tab-register');
+    const loginTab = document.getElementById('tab-login');
+
+    if (type === 'login') {
+        regSection.style.display = 'none';
+        loginSection.style.display = 'block';
+        loginTab.classList.add('active');
+        regTab.classList.remove('active');
+    } else {
+        regSection.style.display = 'block';
+        loginSection.style.display = 'none';
+        regTab.classList.add('active');
+        loginTab.classList.remove('active');
+    }
+}
+
+// 2. Handle Registration
 async function handleRegistration(e) {
     e.preventDefault();
-
-    // Grab values from your HTML layout
     const form = e.target;
     const name = form.querySelector('input[name="fullname"]').value;
     const email = form.querySelector('input[name="email"]').value;
 
-    console.log("Sending data to Supabase...");
-
-    // Insert data into your 'members' table
     const { data, error } = await _supabase
         .from('members')
-        .insert([
-            { 
-                full_name: name, 
-                email: email 
-            }
-        ]);
+        .insert([{ full_name: name, email: email }]);
 
-    // 4. Handle the Result
     if (error) {
-        console.error("Supabase Error:", error.message);
-        alert("Error: " + error.message);
+        alert("Registration Error: " + error.message);
     } else {
-        console.log("Success!");
-        alert("Success! Welcome to TCB Media, " + name);
-        
-        // Redirect the user to the TCB Home page
+        alert("Account Created! Welcome " + name);
         window.location.href = "https://fhagos45-wq.github.io/TCBMEDIA/tcbhome/tcb-home.html";
     }
 }
 
-// 5. Attach the function to the form when the page loads
-window.onload = () => {
-    const mainForm = document.getElementById("tcbRegistrationForm");
-    if (mainForm) {
-        mainForm.addEventListener("submit", handleRegistration);
+// 3. Handle Login (Basic Email Check Example)
+async function handleLogin(e) {
+    e.preventDefault();
+    const email = e.target.querySelector('input[name="loginEmail"]').value;
+    
+    const { data, error } = await _supabase
+        .from('members')
+        .select('*')
+        .eq('email', email);
+
+    if (data && data.length > 0) {
+        alert("Login Successful!");
+        window.location.href = "https://fhagos45-wq.github.io/TCBMEDIA/tcbhome/tcb-home.html";
     } else {
-        console.error("Form 'tcbRegistrationForm' not found!");
+        alert("Account not found. Please register first.");
     }
+}
+
+window.onload = () => {
+    document.getElementById("tcbRegistrationForm")?.addEventListener("submit", handleRegistration);
+    document.getElementById("tcbLoginForm")?.addEventListener("submit", handleLogin);
 };
