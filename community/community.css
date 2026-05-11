@@ -134,4 +134,28 @@ footer {
     .post-container {
         justify-content: center;
     }
+
+
+
+
+
+    .logout-btn {
+    background: linear-gradient(135deg, #ff4d4d, #cc0000);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(255, 0, 0, 0.2);
+}
+
+.logout-btn:hover {
+    transform: scale(1.05);
+}
+
+.logout-btn:active {
+    transform: scale(0.95);
+}
 }
