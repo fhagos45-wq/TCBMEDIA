@@ -225,87 +225,50 @@ button {
         margin: 20px;
     }
 
-/* PREMIUM LOGOUT BUTTON */
-.logout-link{
 
-    color: #ffffff !important;
-    text-decoration: none;
 
-    font-size: 14px;
-    font-weight: 600;
+
+    /* LOGOUT BUTTON */
+.nav-link.logout-link{
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        135deg,
+        rgba(30,144,255,0.25),
+        rgba(0,198,255,0.12)
+    );
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    border-radius: 30px;
 
     padding: 10px 24px;
-    border-radius: 30px;
 
     margin-left: 35px;
 
-    background: linear-gradient(
-        135deg,
-        rgba(30,144,255,0.18),
-        rgba(0,198,255,0.10)
-    );
-
-    border: 1px solid rgba(255,255,255,0.15);
-
-    backdrop-filter: blur(12px);
-
     box-shadow:
-        0 0 15px rgba(30,144,255,0.20),
-        inset 0 0 12px rgba(255,255,255,0.04);
+        0 0 18px rgba(30,144,255,0.30),
+        inset 0 0 10px rgba(255,255,255,0.03);
 
     transition: all 0.4s ease;
 
-    position: relative;
-    overflow: hidden;
+    backdrop-filter: blur(10px);
 }
 
-/* GLOW ANIMATION */
-.logout-link::before{
-
-    content: "";
-
-    position: absolute;
-
-    top: 0;
-    left: -120%;
-
-    width: 100%;
-    height: 100%;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.25),
-        transparent
-    );
-
-    transition: 0.7s;
-}
-
-/* HOVER */
-.logout-link:hover{
+/* HOVER EFFECT */
+.nav-link.logout-link:hover{
 
     background: linear-gradient(
         135deg,
-        rgba(30,144,255,0.35),
-        rgba(0,198,255,0.20)
+        #1e90ff,
+        #00c6ff
     );
 
     box-shadow:
-        0 0 22px rgba(30,144,255,0.45),
-        0 0 40px rgba(0,198,255,0.25);
+        0 0 20px rgba(30,144,255,0.6),
+        0 0 35px rgba(0,198,255,0.35);
 
-    transform: translateY(-3px);
-}
-
-/* LIGHT EFFECT */
-.logout-link:hover::before{
-    left: 120%;
-}
-
-/* CLICK EFFECT */
-.logout-link:active{
-    transform: scale(0.96);
-}
+    transform: translateY(-2px);
 }
 }
