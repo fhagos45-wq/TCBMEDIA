@@ -1,48 +1,43 @@
-// 1. Connection Details
+// 1. Supabase Connection
 const supabaseUrl = 'https://qruvqejwguwivvpomtki.supabase.co';
 const supabaseKey = 'sb_publishable_JXH1vjJjK03URYbJlHcLGA_9c12RqPm';
-
-// 2. Initialize the Supabase Client
 const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-// 3. The Function to Send Data to your 'members' table
-async function registerUser(e) {
-    e.preventDefault(); // Prevents the page from refreshing
+// 2. The Registration Function
+async function handleRegistration(e) {
+    e.preventDefault();
 
-    // Get values from your HTML input fields
-    const nameInput = document.getElementById("userName").value;
-    const emailInput = document.getElementById("userEmail").value;
+    // This grabs the data from your "tcbRegistrationForm"
+    const form = e.target;
+    const name = form.querySelector('input[name="fullname"]').value;
+    const email = form.querySelector('input[name="email"]').value;
+    const password = form.querySelector('input[name="password"]').value;
 
-    console.log("Sending data to Supabase...");
+    console.log("Saving to Supabase...");
 
-    // Insert data into the 'members' table
+    // Sending data to your 'members' table
     const { data, error } = await _supabase
         .from('members')
         .insert([
             { 
-                full_name: nameInput, 
-                email: emailInput 
+                full_name: name, 
+                email: email 
+                // Note: If you want to save password, you must add a 'password' column in Supabase first
             }
         ]);
 
     if (error) {
-        console.error("Error saving data:", error.message);
-        alert("Registration Failed: " + error.message);
+        alert("Error: " + error.message);
     } else {
-        console.log("Data saved successfully!");
-        alert("Success! Welcome to TCB Media, " + nameInput);
-        
-        // Clear the form after success
-        document.getElementById("tigrayForm").reset();
+        alert("Success! Welcome to TCB, " + name);
+        form.reset();
     }
 }
 
-// 4. Connect the function to your "Register" button
+// 3. Attach the function to your form
 window.onload = () => {
-    const registrationForm = document.getElementById("tigrayForm");
-    if (registrationForm) {
-        registrationForm.addEventListener("submit", registerUser);
-    } else {
-        console.error("Form with ID 'tigrayForm' not found in HTML.");
+    const mainForm = document.getElementById("tcbRegistrationForm");
+    if (mainForm) {
+        mainForm.addEventListener("submit", handleRegistration);
     }
 };
