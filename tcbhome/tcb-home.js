@@ -70,16 +70,13 @@ window.onload = () => {
 
 
 
-
-// LOGOUT BUTTON
 function logoutUser() {
 
-    // Remove saved login
+    // Remove login data
     localStorage.removeItem("loggedIn");
 
-    // Message
-    alert("Logged out successfully!");
+    // Go to your login/register page
+    window.location.href = "https://fhagos45-wq.github.io/TCBMEDIA/tcb.html";
+}
 
-    // Go back to login page
-    window.location.href = "https://fhagos45-wq.github.io/TCBMEDIA/index.html";
 }
