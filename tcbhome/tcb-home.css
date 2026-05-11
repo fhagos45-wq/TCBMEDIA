@@ -225,32 +225,10 @@ button {
         margin: 20px;
     }
 
-
-   /* LOGOUT BUTTON 
-.logout-btn {
-    color: #fff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 10px 20px;
-    border-radius: 30px;
-    transition: 0.4s;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+/* LOGOUT LINK */
+.logout-link{
+    margin-left: 40px;
 }
-
-
-.logout-btn:hover {
-    background: var(--primary-blue);
-    box-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
-}
-
-
-.logout-btn:active {
-    transform: scale(0.96);
-
-    */
 }
 }
 }
