@@ -3,97 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TCB Media | Premium Experience</title>
+    <title>TCB Media | Premium Access</title>
     <link rel="stylesheet" href="tcb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
 <div class="site-container">
-    <header class="premium-header">
+    <header class="top-bar">
         <div class="content-wrapper header-inner">
-            <img src="tigraytcb.png" alt="TCB Logo" class="nav-logo">
+            <div class="logo-area">
+                <img src="tigraytcb.png" alt="TCB Logo" class="nav-logo">
+            </div>
             <nav class="navigation">
-                <button onclick="showForm('login')" class="btn-login">Sign In</button>
-                <button onclick="showForm('register')" class="btn-signup">Join Now</button>
+                <div class="user-actions">
+                    <button onclick="showForm('login')" class="btn-text">Log In</button>
+                    <button onclick="showForm('register')" class="btn-premium">Get Started</button>
+                </div>
             </nav>
-        </div>
-        <div class="header-wave">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-            </svg>
         </div>
     </header>
 
     <div class="content-wrapper body-grid">
-        <aside class="side-panel left-ad">
-            <div class="glass-ad">AD SPACE</div>
+        <aside class="side-panel">
+            <div class="ad-label">SPONSORED</div>
+            <div class="ad-box-glass">
+                <p>Premium Space</p>
+            </div>
         </aside>
 
         <main class="main-content">
-            <div class="auth-box">
-                <div class="auth-tabs">
-                    <button id="tab-register" class="active" onclick="showForm('register')">New Account</button>
-                    <button id="tab-login" onclick="showForm('login')">Welcome Back</button>
-                </div>
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-tabs">
+                        <button id="tab-register" class="tab-link active" onclick="showForm('register')">Sign Up</button>
+                        <button id="tab-login" class="tab-link" onclick="showForm('login')">Sign In</button>
+                    </div>
 
-                <div class="form-container">
-                    <section id="registration-section">
-                        <form id="tcbRegistrationForm">
-                            <div class="input-wrap">
-                                <label>Full Name</label>
-                                <input type="text" name="fullname" placeholder="Enter your name" required>
+                    <div class="form-content">
+                        <section id="registration-section">
+                            <div class="section-intro">
+                                <h2>Join the Community</h2>
+                                <p>Start your journey with TCB Media today.</p>
                             </div>
-                            <div class="input-wrap">
-                                <label>Email</label>
-                                <input type="email" name="email" placeholder="you@example.com" required>
-                            </div>
-                            <div class="input-wrap">
-                                <label>Password</label>
-                                <input type="password" name="password" placeholder="••••••••" required>
-                            </div>
-                            <button type="submit" class="glow-button">Create Account</button>
-                        </form>
-                    </section>
+                            <form id="tcbRegistrationForm">
+                                <div class="input-field">
+                                    <label>Full Name</label>
+                                    <input type="text" name="fullname" placeholder="e.g. Alex Doe" required>
+                                </div>
+                                <div class="input-field">
+                                    <label>Email Address</label>
+                                    <input type="email" name="email" placeholder="name@company.com" required>
+                                </div>
+                                <div class="input-field">
+                                    <label>Password</label>
+                                    <input type="password" name="password" placeholder="••••••••" required>
+                                </div>
+                                <button type="submit" class="btn-main">Create Account</button>
+                            </form>
+                        </section>
 
-                    <section id="login-section" style="display: none;">
-                        <form id="tcbLoginForm">
-                            <div class="input-wrap">
-                                <label>Email Address</label>
-                                <input type="email" name="loginEmail" placeholder="you@example.com" required>
+                        <section id="login-section" style="display: none;">
+                            <div class="section-intro">
+                                <h2>Welcome Back</h2>
+                                <p>Please enter your details to sign in.</p>
                             </div>
-                            <div class="input-wrap">
-                                <label>Password</label>
-                                <input type="password" name="loginPassword" placeholder="••••••••" required>
-                            </div>
-                            <button type="submit" class="glow-button">Login</button>
-                        </form>
-                    </section>
+                            <form id="tcbLoginForm">
+                                <div class="input-field">
+                                    <label>Email Address</label>
+                                    <input type="email" name="loginEmail" placeholder="name@company.com" required>
+                                </div>
+                                <div class="input-field">
+                                    <label>Password</label>
+                                    <input type="password" name="loginPassword" placeholder="••••••••" required>
+                                </div>
+                                <button type="submit" class="btn-main">Sign In</button>
+                                <p class="forgot-pass"><a href="#">Forgot password?</a></p>
+                            </form>
+                        </section>
+                    </div>
                 </div>
             </div>
         </main>
 
-        <aside class="side-panel right-ad">
-            <div class="glass-ad">PARTNERS</div>
+        <aside class="side-panel">
+            <div class="ad-label">PARTNERS</div>
+            <div class="ad-box-glass">
+                <p>Partner Content</p>
+            </div>
         </aside>
     </div>
 
     <footer class="premium-footer">
-        <div class="footer-wave">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-            </svg>
-        </div>
-        <div class="content-wrapper footer-content">
-            <div class="footer-info">
-                <img src="tigraytcb.png" alt="TCB Logo" class="footer-logo">
-                <p>Leading the digital revolution in media and education.</p>
+        <div class="content-wrapper footer-grid">
+            <div class="footer-brand">
+                <img src="tigraytcb.png" alt="TCB Logo">
+                <p>Authentic News. Modern Education.</p>
             </div>
-            <div class="footer-links">
+            <div class="footer-socials">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
                 <a href="#"><i class="fab fa-tiktok"></i></a>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 TCB PLATFORM. ALL RIGHTS RESERVED.</p>
         </div>
     </footer>
 </div>
