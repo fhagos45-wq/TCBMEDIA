@@ -1,65 +1,61 @@
 const supabaseUrl = 'https://qruvqejwguwivvpomtki.supabase.co';
-const supabaseKey = 'sb_publishable_JXH1vjJjK03URYbJlHcLGA_9c12RqPm';
-const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseKey = 'YOUR_ANON_PUBLIC_KEY';
 
-// UI Toggle Logic
-function showForm(type) {
-    const regSection = document.getElementById('registration-section');
-    const loginSection = document.getElementById('login-section');
-    const regTab = document.getElementById('tab-register');
-    const loginTab = document.getElementById('tab-login');
+// Create Supabase client
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-    if (type === 'login') {
-        regSection.style.display = 'none';
-        loginSection.style.display = 'block';
-        loginTab.classList.add('active');
-        regTab.classList.remove('active');
+// Elements (only if they exist on the page)
+const logoutBtn = document.getElementById("logoutBtn");
+const loginBtn = document.getElementById("loginBtn");
+const statusText = document.getElementById("status");
+
+// 🔐 Check user session
+async function checkAuth() {
+    const { data } = await supabase.auth.getSession();
+    const user = data.session?.user;
+
+    if (user) {
+        console.log("User logged in:", user.email);
+
+        if (logoutBtn) logoutBtn.style.display = "inline-block";
+        if (loginBtn) loginBtn.style.display = "none";
+        if (statusText) statusText.innerText = "Logged in ✔";
     } else {
-        regSection.style.display = 'block';
-        loginSection.style.display = 'none';
-        regTab.classList.add('active');
-        loginTab.classList.remove('active');
+        console.log("No user logged in");
+
+        if (logoutBtn) logoutBtn.style.display = "none";
+        if (loginBtn) loginBtn.style.display = "inline-block";
+        if (statusText) statusText.innerText = "Not logged in ❌";
     }
 }
 
-// Handle Registration
-async function handleRegistration(e) {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.querySelector('input[name="fullname"]').value;
-    const email = form.querySelector('input[name="email"]').value;
-
-    const { data, error } = await _supabase
-        .from('members')
-        .insert([{ full_name: name, email: email }]);
+// 🚪 Logout function
+async function logoutUser() {
+    const { error } = await supabase.auth.signOut();
 
     if (error) {
-        alert("Error: " + error.message);
-    } else {
-        alert("Welcome, " + name + "!");
-        window.location.href = "https://fhagos45-wq.github.io/TCBMEDIA/tcbhome/tcb-home.html";
+        alert("Logout failed: " + error.message);
+        return;
     }
+
+    // refresh UI after logout
+    checkAuth();
+
+    // optional redirect
+    window.location.href = "login.html";
 }
 
-// Handle Login
-async function handleLogin(e) {
-    e.preventDefault();
-    const email = e.target.querySelector('input[name="loginEmail"]').value;
-    
-    const { data, error } = await _supabase
-        .from('members')
-        .select('*')
-        .eq('email', email);
-
-    if (data && data.length > 0) {
-        alert("Signed in successfully!");
-        window.location.href = "https://fhagos45-wq.github.io/TCBMEDIA/tcbhome/tcb-home.html";
-    } else {
-        alert("Email not found. Please register.");
+// 🎯 Attach button event
+document.addEventListener("DOMContentLoaded", () => {
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", logoutUser);
     }
-}
 
-window.onload = () => {
-    document.getElementById("tcbRegistrationForm")?.addEventListener("submit", handleRegistration);
-    document.getElementById("tcbLoginForm")?.addEventListener("submit", handleLogin);
-};
+    if (loginBtn) {
+        loginBtn.addEventListener("click", () => {
+            window.location.href = "login.html";
+        });
+    }
+
+    checkAuth();
+});
