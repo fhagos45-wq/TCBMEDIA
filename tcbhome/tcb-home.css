@@ -225,8 +225,43 @@ button {
         margin: 20px;
     }
 
-/* LOGOUT LINK */
+/* BEAUTIFUL LOGOUT BUTTON */
 .logout-link{
-    margin-left: 40px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 30px;
+
+    background: linear-gradient(135deg, #1e90ff, #00c6ff);
+
+    box-shadow:
+    0 0 12px rgba(30, 144, 255, 0.4),
+    0 0 25px rgba(0, 198, 255, 0.25);
+
+    transition: all 0.35s ease;
+
+    margin-left: 35px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* HOVER EFFECT */
+.logout-link:hover{
+
+    transform: translateY(-3px) scale(1.03);
+
+    background: linear-gradient(135deg, #00c6ff, #1e90ff);
+
+    box-shadow:
+    0 0 20px rgba(30, 144, 255, 0.7),
+    0 0 35px rgba(0, 198, 255, 0.45);
+}
+
+/* CLICK EFFECT */
+.logout-link:active{
+    transform: scale(0.96);
 }
 }
