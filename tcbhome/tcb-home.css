@@ -226,7 +226,7 @@ button {
     }
 
 
-   /* LOGOUT BUTTON */
+   /* LOGOUT BUTTON 
 .logout-btn {
     color: #fff;
     text-decoration: none;
@@ -240,15 +240,17 @@ button {
     cursor: pointer;
 }
 
-/* HOVER EFFECT */
+
 .logout-btn:hover {
     background: var(--primary-blue);
     box-shadow: 0 0 20px rgba(30, 144, 255, 0.5);
 }
 
-/* ACTIVE EFFECT */
+
 .logout-btn:active {
     transform: scale(0.96);
+
+    */
 }
 }
 }
