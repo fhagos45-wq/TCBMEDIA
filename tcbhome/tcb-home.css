@@ -224,4 +224,24 @@ button {
         padding: 50px 20px;
         margin: 20px;
     }
+
+
+    .logout-btn{
+    padding:10px 22px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#ff4d4d,#ff1f1f);
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s ease;
+    margin-left:20px;
+    box-shadow:0 0 15px rgba(255,0,0,0.3);
+}
+
+.logout-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 20px rgba(255,0,0,0.6);
+}
 }
