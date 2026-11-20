@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekly Teaching Timetable</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* Smooth transitions for interactive filtering */
+    .slot-card {
+      transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .slot-dimmed {
+      opacity: 0.22;
+      filter: grayscale(70%);
+      transform: scale(0.98);
+    }
+
+    /* Landscape Print Optimization (A4 Landscape Single Page) */
+    @page {
+      size: A4 landscape;
+      margin: 8mm;
+    }
+
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .print-container {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        padding: 12px 16px !important;
+        margin: 0 !important;
+        border-radius: 12px !important;
+      }
+
+      .slot-dimmed {
+        opacity: 1 !important;
+        filter: none !important;
+        transform: none !important;
+      }
+
+      table {
+        page-break-inside: avoid;
+      }
+
+      tr {
+        page-break-inside: avoid;
+      }
+
+      .period-cell {
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+      }
+
+      .slot-card {
+        padding: 6px 10px !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen p-3 sm:p-5 lg:p-6 flex flex-col items-center justify-center">
+
+  <!-- Main Landscape Dashboard Container -->
+  <main class="print-container w-full max-w-[1380px] bg-white rounded-2xl shadow-lg border border-slate-200/90 p-4 sm:p-6">
+
+    <!-- Top Header & Controls -->
+    <header class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pb-4 mb-4 border-b border-slate-200">
+      <div class="flex items-center gap-3.5">
+        <div class="w-11 h-11 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-sm shrink-0">
+          <!-- Calendar SVG Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            Weekly Teaching Timetable
+          </h1>
+          <p class="text-xs sm:text-sm font-medium text-slate-500">
+            Sunday – Thursday &bull; Christian Religion &amp; Computer Studies
+          </p>
+        </div>
+      </div>
+
+      <!-- Interactive Filter Toggles & Print Button -->
+      <div class="no-print flex flex-wrap items-center gap-2">
+        <div class="inline-flex flex-wrap items-center bg-slate-100 p-1 rounded-xl border border-slate-200/80 gap-1" role="group" aria-label="Subject Filter">
+          <button type="button" data-filter="all" class="filter-btn active px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold bg-white text-slate-900 shadow-sm transition">
+            All Classes
+          </button>
+          <button type="button" data-filter="religion" class="filter-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-amber-800 transition flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+            Religion Only
+          </button>
+          <button type="button" data-filter="computer" class="filter-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-indigo-800 transition flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+            Computer Only
+          </button>
+          <button type="button" data-filter="free" class="filter-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-emerald-800 transition flex items-center gap-1.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            Free Periods
+          </button>
+        </div>
+
+        <button type="button" id="printBtn" class="ml-auto sm:ml-2 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 active:scale-[0.99] text-white text-xs sm:text-sm font-semibold shadow-sm transition cursor-pointer">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Print Landscape
+        </button>
+      </div>
+    </header>
+
+    <!-- Landscape Schedule Grid -->
+    <div class="w-full overflow-x-auto rounded-xl border border-slate-200">
+      <table class="w-full min-w-[780px] border-collapse table-fixed">
+        <thead>
+          <tr class="bg-slate-900 text-white">
+            <th class="w-[14%] py-3 px-3 text-left text-xs sm:text-sm font-bold uppercase tracking-wider border-r border-slate-700">
+              Time
+            </th>
+            <th class="w-[17.2%] py-3 px-3 text-center text-xs sm:text-sm font-bold uppercase tracking-wider border-r border-slate-700">
+              Sunday
+            </th>
+            <th class="w-[17.2%] py-3 px-3 text-center text-xs sm:text-sm font-bold uppercase tracking-wider border-r border-slate-700">
+              Monday
+            </th>
+            <th class="w-[17.2%] py-3 px-3 text-center text-xs sm:text-sm font-bold uppercase tracking-wider border-r border-slate-700">
+              Tuesday
+            </th>
+            <th class="w-[17.2%] py-3 px-3 text-center text-xs sm:text-sm font-bold uppercase tracking-wider border-r border-slate-700">
+              Wednesday
+            </th>
+            <th class="w-[17.2%] py-3 px-3 text-center text-xs sm:text-sm font-bold uppercase tracking-wider">
+              Thursday
+            </th>
+          </tr>
+        </thead>
+        <tbody id="timetableBody" class="divide-y divide-slate-200 bg-white">
+          <!-- Rows populated dynamically via JS for precision & maintainability -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Compact Visual Summary Footer Strip -->
+    <footer class="mt-4 pt-3.5 border-t border-slate-200 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 text-xs sm:text-sm">
+      
+      <!-- Workload Totals -->
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 text-white font-bold">
+          Total: 22 Periods
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 text-amber-900 border border-amber-200 font-semibold">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+          12 Religion
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-900 border border-indigo-200 font-semibold">
+          <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+          10 Computer
+        </span>
+      </div>
+
+      <!-- Color Legend & 3 Open Homework/Prep Slots -->
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-950 border border-emerald-200">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
+          <span class="font-bold">3 Open Slots:</span>
+          <span class="font-medium text-emerald-800">
+            Sun 10:35–11:20 &bull; Wed 11:20–12:05 &bull; Thu 9:30–10:15
+          </span>
+        </div>
+      </div>
+
+    </footer>
+  </main>
+
+  <script>
+    // Exact verified weekly schedule data
+    const scheduleData = [
+      {
+        period: "Period 1",
+        time: "8:00 – 8:45",
+        type: "regular",
+        slots: [
+          { day: "Sunday", grade: "6A", subject: "Religion", category: "religion" },
+          { day: "Monday", grade: "8A", subject: "Computer", category: "computer" },
+          { day: "Tuesday", grade: "10A", subject: "Religion", category: "religion" },
+          { day: "Wednesday", grade: "7A", subject: "Computer", category: "computer" },
+          { day: "Thursday", grade: "3A / 3B", subject: "Religion", category: "religion" }
+        ]
+      },
+      {
+        period: "Period 2",
+        time: "8:45 – 9:30",
+        type: "regular",
+        slots: [
+          { day: "Sunday", grade: "8A", subject: "Computer", category: "computer" },
+          { day: "Monday", grade: "5A", subject: "Computer", category: "computer" },
+          { day: "Tuesday", grade: "7A", subject: "Computer", category: "computer" },
+          { day: "Wednesday", grade: "10A", subject: "Religion", category: "religion" },
+          { day: "Thursday", grade: "6A", subject: "Religion", category: "religion" }
+        ]
+      },
+      {
+        period: "Period 3",
+        time: "9:30 – 10:15",
+        type: "regular",
+        slots: [
+          { day: "Sunday", grade: "3A / 3B", subject: "Religion", category: "religion" },
+          { day: "Monday", grade: "4A", subject: "Computer", category: "computer" },
+          { day: "Tuesday", grade: "3A / 3B", subject: "Religion", category: "religion" },
+          { day: "Wednesday", grade: "3A / 3B", subject: "Religion", category: "religion" },
+          { day: "Thursday", grade: "FREE / Prep", subject: "Open Slot", category: "free" }
+        ]
+      },
+      {
+        period: "Break",
+        time: "10:15 – 10:35",
+        type: "break"
+      },
+      {
+        period: "Period 4",
+        time: "10:35 – 11:20",
+        type: "regular",
+        slots: [
+          { day: "Sunday", grade: "FREE / Prep", subject: "Open Slot", category: "free" },
+          { day: "Monday", grade: "3A / 3B", subject: "Religion", category: "religion" },
+          { day: "Tuesday", grade: "6A", subject: "Religion", category: "religion" },
+          { day: "Wednesday", grade: "6A", subject: "Computer", category: "computer" },
+          { day: "Thursday", grade: "5A", subject: "Computer", category: "computer" }
+        ]
+      },
+      {
+        period: "Period 5",
+        time: "11:20 – 12:05",
+        type: "regular",
+        slots: [
+          { day: "Sunday", grade: "4A", subject: "Computer", category: "computer" },
+          { day: "Monday", grade: "6A", subject: "Religion", category: "religion" },
+          { day: "Tuesday", grade: "6A", subject: "Computer", category: "computer" },
+          { day: "Wednesday", grade: "FREE / Prep", subject: "Open Slot", category: "free" },
+          { day: "Thursday", grade: "10A", subject: "Religion", category: "religion" }
+        ]
+      }
+    ];
+
+    // Style configurations for high-contrast, color-coded cards
+    const cardStyles = {
+      religion: {
+        wrapper: "bg-amber-50/95 border-amber-300 text-amber-950 shadow-xs",
+        grade: "text-amber-950 font-extrabold text-base sm:text-lg leading-tight",
+        badge: "bg-amber-500 text-white text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md"
+      },
+      computer: {
+        wrapper: "bg-indigo-50/95 border-indigo-300 text-indigo-950 shadow-xs",
+        grade: "text-indigo-950 font-extrabold text-base sm:text-lg leading-tight",
+        badge: "bg-indigo-600 text-white text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md"
+      },
+      free: {
+        wrapper: "bg-emerald-50/95 border-emerald-300 border-dashed text-emerald-950",
+        grade: "text-emerald-900 font-bold text-sm sm:text-base leading-tight",
+        badge: "bg-emerald-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md"
+      }
+    };
+
+    function renderTimetable() {
+      const tbody = document.getElementById("timetableBody");
+      tbody.innerHTML = "";
+
+      scheduleData.forEach((row) => {
+        const tr = document.createElement("tr");
+
+        if (row.type === "break") {
+          tr.className = "bg-slate-100/90";
+          tr.innerHTML = `
+            <td class="py-2 px-3 border-r border-slate-200 bg-slate-100">
+              <div class="text-xs sm:text-sm font-bold text-slate-700">${row.time}</div>
+            </td>
+            <td colspan="5" class="py-2 px-3 text-center">
+              <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-500">
+                <span>&#9749;</span>
+                <span>Morning Break (20 Mins)</span>
+              </div>
+            </td>
+          `;
+        } else {
+          tr.className = "hover:bg-slate-50/60 transition-colors";
+
+          // Time Column Cell
+          let cellsHtml = `
+            <td class="period-cell py-2.5 px-3 border-r border-slate-200 bg-slate-50/70 align-middle">
+              <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">${row.period}</div>
+              <div class="text-xs sm:text-sm font-extrabold text-slate-800 whitespace-nowrap mt-0.5">${row.time}</div>
+            </td>
+          `;
+
+          // Day Columns
+          row.slots.forEach((slot) => {
+            const style = cardStyles[slot.category];
+            const badgeText = slot.category === "free" ? "Homework / Prep" : slot.subject;
+
+            cellsHtml += `
+              <td class="period-cell p-2 border-r last:border-r-0 border-slate-200 align-middle">
+                <div data-category="${slot.category}" class="slot-card rounded-xl border ${style.wrapper} px-3 py-2.5 flex flex-col items-center justify-center text-center gap-1.5 min-h-[68px]">
+                  <span class="${style.grade}">${slot.grade}</span>
+                  <span class="${style.badge}">${badgeText}</span>
+                </div>
+              </td>
+            `;
+          });
+
+          tr.innerHTML = cellsHtml;
+        }
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Interactive Filter Controls
+    function setupFilters() {
+      const buttons = document.querySelectorAll(".filter-btn");
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const selected = btn.getAttribute("data-filter");
+
+          // Update active button styling
+          buttons.forEach((b) => {
+            b.classList.remove("bg-white", "text-slate-900", "shadow-sm", "active");
+            b.classList.add("text-slate-600");
+          });
+          btn.classList.add("bg-white", "text-slate-900", "shadow-sm", "active");
+          btn.classList.remove("text-slate-600");
+
+          // Highlight matching cards & dim non-matching cards
+          const cards = document.querySelectorAll(".slot-card");
+          cards.forEach((card) => {
+            const cat = card.getAttribute("data-category");
+            if (selected === "all" || cat === selected) {
+              card.classList.remove("slot-dimmed");
+            } else {
+              card.classList.add("slot-dimmed");
+            }
+          });
+        });
+      });
+    }
+
+    // Print Button Handler
+    function setupPrint() {
+      const printBtn = document.getElementById("printBtn");
+      printBtn.addEventListener("click", () => {
+        window.print();
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      renderTimetable();
+      setupFilters();
+      setupPrint();
+    });
+  </script>
+</body>
+</html>
